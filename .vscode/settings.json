@@ -1,3 +1,20 @@
 {
-    "git.ignoreLimitWarning": true
+  "sqltools.connections": [
+    {
+      "mysqlOptions": {
+        "authProtocol": "xprotocol",
+        "enableSsl": "Disabled"
+      },
+      "ssh": "Disabled",
+      "previewLimit": 50,
+      "server": "localhost",
+      "port": 33060,
+      "driver": "MySQL",
+      "name": "My SQL local",
+      "database": "bmw_sales",
+      "username": "root",
+      "password": "Nimrod@Sql1",
+      "connectionTimeout": 30
+    }
+  ]
 }
