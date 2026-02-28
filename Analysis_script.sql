@@ -1,39 +1,5 @@
 USE bmw_sales;
--- data cleaning.
-SELECT CAST(
-        replace(replace(revenue, '$', ''), ',', '') AS DECIMAL(20, 2)
-    )
-FROM bmw;
--- create a new column for the clean revenue
-ALTER TABLE bmw
-ADD revenue_new DECIMAL(20, 2);
--- add clean revenue to new column
-UPDATE bmw
-SET revenue_new = CAST(
-        replace(replace(revenue, '$', ''), ',', '') AS DECIMAL(20, 2)
-    ) -- drop old revenue column
-ALTER TABLE bmw DROP COLUMN revenue;
--- change new columen name to revenue
-ALTER TABLE bmw CHANGE revenue_new Revenue DECIMAL(20, 2);
--- REMOVE ',' from the Mileage column.
-ALTER TABLE bmw
-ADD mileage_kms DECIMAL (10, 2);
--- Clean and add new clean data inside
-UPDATE bmw
-SET mileage_kms = CAST(REPLACE(Mileage_KM, ',', '') AS DECIMAL(10, 2));
--- drop the old column
-ALTER TABLE bmw DROP COLUMN Mileage_KM;
--- Cast and modify the Engine size datatype
-UPDATE bmw
-SET Engine_Size_L = CAST(Engine_Size_L AS DECIMAL(5, 2));
-ALTER TABLE bmw
-MODIFY Engine_Size_L DECIMAL(5, 2);
--- CHANGE THE DATA TYPE OF THE PRICE COLUMN AND modify IT TO DECIMAL
-ALTER TABLE bmw
-ADD price DECIMAL(15, 2)
-UPDATE bmw
-SET price = revenue / Sales_Volume
-ALTER TABLE DROP column Price_USD;
+-
 -- --Now the data is Clean, Let's dive in.
 -- Evaluate all data
 SELECT *
@@ -42,11 +8,7 @@ FROM bmw;
 SELECT count(*)
 from bmw;
 -- CHECK FOR NULL VALUES
-SELECT SUM(Model IS NULL) AS null_model,
-    SUM(Price_USD IS NULL) AS null_price,
-    SUM(Revenue IS NULL) AS null_revenue,
-    sum(sales_volume IS NULL) AS NULL_SALES
-FROM bmw;
+
 -- Total revenue for the period under review
 SELECT FORMAT(SUM(revenue), 0) AS TOTAL_REVENUE
 FROM bmw;
@@ -60,7 +22,7 @@ from bmw
 order by year ASC;
 -- Models and count
 select COUNT(DISTINCT(Year))
-from bmw
+from bmw;
 SELECT DISTINCT(Model) Models,
     (
         select COUNT(DISTINCT(model)) model_count
@@ -68,7 +30,7 @@ SELECT DISTINCT(Model) Models,
     ) Total_model_count
 from bmw;
 -- Regions
-SELECT DISTINCT(region)
+SELECT DISTINCT(region) AS REGIONS
 from bmw;
 -- Total Units Sold
 SELECT year,
@@ -170,12 +132,29 @@ ORDER BY SUM(sales_volume) DESC;
 --
 ---
 -- bEST PERFORMING AND WORST PERFOMING YEARS
-select 
-year,
-FORMAT(sum(revenue), 2) Revenue
+WITH low_years AS 
+(select 
+`year`,
+sum(revenue) as Total_revenue,
+rank() over(order by sum(revenue) ASC) as RN
 from bmw
-group by year
-order by Revenue DESC;
+GROUP BY `year`),
+high_years AS
+ (SELECT 
+ `year`,
+ sum(revenue) AS Total_revenue,
+RANK() OVER(order by sum(revenue) DESC) AS RN
+from bmw
+GROUP BY `year`)
+select
+lY.RN 'S/N',
+LY.`year` AS LOW_YEARS,
+FORMAT(LY.total_revenue, 2) AS total_revenue,
+HY.`YEAR` AS HIGH_YEARS,
+FORMAT(HY.total_revenue, 2) AS total_revenue
+FROM low_years LY
+inner join high_years HY ON LY.RN = HY.RN
+WHERE lY.RN <= 5;
 --
 --
 -- Growth trend from 2010 to 2014
@@ -272,29 +251,7 @@ from revenue_stat
 order by percent_growth DESC;
 --
 --
-WITH low_years AS 
-(select 
-`year`,
-sum(revenue) as Total_revenue,
-rank() over(order by sum(revenue) ASC) as RN
-from bmw
-GROUP BY `year`),
-high_years AS
- (SELECT 
- `year`,
- sum(revenue) AS Total_revenue,
-RANK() OVER(order by sum(revenue) DESC) AS RN
-from bmw
-GROUP BY `year`)
-select
-lY.RN 'S/N',
-LY.`year` AS LOW_YEARS,
-FORMAT(LY.total_revenue, 2) AS total_revenue,
-HY.`YEAR` AS HIGH_YEARS,
-FORMAT(HY.total_revenue, 2) AS total_revenue
-FROM low_years LY
-inner join high_years HY ON LY.RN = HY.RN
-WHERE lY.RN <= 5;
+
 --
 --
 -- Percentage growth of sales between 2010 and 2014
@@ -418,11 +375,10 @@ from fuel_calc;
 SELECT 
 region,
 Transmission,
--- format(SUM(SALES_VOLUME), 2) AS sales, 
-rank() over(partition by region order by sum(sales_volume) DESC) AS POSITION
+format(SUM(SALES_VOLUME), 2) AS sales
 FROM BMW
 group by transmission, region
-order by region;
+order by region, sum(sales_volume);
 
 -- 
 --
@@ -496,8 +452,6 @@ ORDER BY AVG(PRICE_USD) desc;
 --
 -- mILEAGE AND PRICE
 select 
-
-
 CASE
 	WHEN mileage_kms <= 50000 THEN 'Low Mileage(≤ 50,000km)'
     WHEN mileage_kms <= 100000 THEN 'medium Mileage(50,001 - 100,000 km)'

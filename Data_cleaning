@@ -1,0 +1,36 @@
+USE bmw_sales;
+-- data cleaning.
+SELECT CAST(
+        replace(replace(revenue, '$', ''), ',', '') AS DECIMAL(20, 2)
+    )
+FROM bmw;
+-- create a new column for the clean revenue
+ALTER TABLE bmw
+ADD revenue_new DECIMAL(20, 2);
+-- add clean revenue to new column
+UPDATE bmw
+SET revenue_new = CAST(
+        replace(replace(revenue, '$', ''), ',', '') AS DECIMAL(20, 2)
+    ) -- drop old revenue column
+ALTER TABLE bmw DROP COLUMN revenue;
+-- change new columen name to revenue
+ALTER TABLE bmw CHANGE revenue_new Revenue DECIMAL(20, 2);
+-- REMOVE ',' from the Mileage column.
+ALTER TABLE bmw
+ADD mileage_kms DECIMAL (10, 2);
+-- Clean and add new clean data inside
+UPDATE bmw
+SET mileage_kms = CAST(REPLACE(Mileage_KM, ',', '') AS DECIMAL(10, 2));
+-- drop the old column
+ALTER TABLE bmw DROP COLUMN Mileage_KM;
+-- Cast and modify the Engine size datatype
+UPDATE bmw
+SET Engine_Size_L = CAST(Engine_Size_L AS DECIMAL(5, 2));
+ALTER TABLE bmw
+MODIFY Engine_Size_L DECIMAL(5, 2);
+-- CHANGE THE DATA TYPE OF THE PRICE COLUMN AND modify IT TO DECIMAL
+ALTER TABLE bmw
+ADD price DECIMAL(15, 2)
+UPDATE bmw
+SET price = revenue / Sales_Volume
+ALTER TABLE DROP column Price_USD;
