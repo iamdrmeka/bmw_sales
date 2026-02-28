@@ -64,7 +64,7 @@
 
 ## ACTIONABLE INSIGHTS
 
-    - highest revenue and sales generation comes from the Asian market.
+    - Highest revenue and sales generation comes from the Asian market.
 
     - The middle East has  great potential for expansion and growth.
 

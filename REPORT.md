@@ -67,14 +67,18 @@ Total sales for the period under review stood at Two hundred fifty-three million
 
 We review the period from 2010 to 2014
 
-- 2022 had was the most profitable year while 2023 the next year had the worst revenue for the whole 14 years.  
+- 2022 had was the most profitable year while 2023 the next year had the worst revenue for the whole 14 years.
+
   ![](Tables/yoy_growth_revenue.png)
-- The YoY growth shows initial negative growth index slight negligible growth and another turn negative and slight growth.  
+
+- The YoY growth shows initial negative growth index slight negligible growth and another turn negative and slight growth.
+
   ![](Tables/All_time_growth.png)
+
 - the overall growth from comparing 2010 revenue to 2024 revenue stood at 4.06%.
 
-![Regions](regions.png)  
-The data features Six(6) regions accross the world.
+  ![Regions](regions.png)  
+   The data features Six(6) regions accross the world.
 
 ### TOTAL SALES AND REVENUE PER REGION
 
@@ -114,7 +118,9 @@ The data features Six(6) regions accross the world.
 #### Model perfomance accross the Regions
 
 **Africa**
-![Africa](Tables/AFRICA.png)  
+
+![Africa](Tables/AFRICA.png)
+
 In Africa, the 5 series recorded the highest sales and the 2nd highest average price.
 
 - The 7 series which was the number one in the global ranking ranked 7th in the African market with an average price ranking 3rd this shows that though it was not the consumer favourite in Africa as it perfomed significantly lower with lower price than a more expensive model.
@@ -122,6 +128,7 @@ In Africa, the 5 series recorded the highest sales and the 2nd highest average p
 - The M3 had the lowest sales in Africa as with the Global market.
 
 **Asia**
+
 ![Asia](Tables/Asia.png)
 
 - In Asia, the XI model recorded the highest sales while the 7 series came 2nd.
@@ -130,6 +137,7 @@ In Africa, the 5 series recorded the highest sales and the 2nd highest average p
   -- The highest selling car in Asia (the X1) had a relatively lower price than more 60% of the other models, suggesting that the Asian market may favour lower pricing vehicles.
 
 **Europe**
+
 ![Europe](Tables/Europe.png)
 
 - In Europe, the i8 series had the highest sales with the second average price
@@ -139,6 +147,7 @@ In Africa, the 5 series recorded the highest sales and the 2nd highest average p
 - The european data shows that sales are not majorly influenced by the pricing, but rather other qualities such as the specification of the vehicles themselves.
 
 **Middle East**
+
 ![Middle East](Tables/Middle_East.png)
 
 - 7 SERIES was the highest purchase in the middle east.
@@ -146,6 +155,7 @@ In Africa, the 5 series recorded the highest sales and the 2nd highest average p
 - The other models shows an influence of lower pricing to the sales volume. suggesting the market may tilt towards cars with lower price range.
 
 **North America**
+
 ![North America](<Tables/North america.png>)
 
 - The 7 series remained the favourite of North America followed by the X1.
@@ -153,6 +163,7 @@ In Africa, the 5 series recorded the highest sales and the 2nd highest average p
 - The sales dataa slight relationship between models with middle ranged pricing.
 
 **South America**
+
 ![South America](Tables/south_america.png)
 
 - The x6 models had the highest sales in south America with the the 7 series coming 2nd.
@@ -173,21 +184,25 @@ In Africa, the 5 series recorded the highest sales and the 2nd highest average p
 - Hybrid Models sold the highest in asia, followed by the Electric models. The Diesel came 3rd with Petrol having the lowest sales. Asia has more adaptability to electric models and subsequent productions should be more of the Eco friendly models.
 
 **Europe**
+
 ![Europe](Tables/europe_fuel.png)
 
 - Europe bought more Hybrid, followed by petrol. suprisenly, electric came 3rd with Diesel as the least prefered.
 
-**Middle East**  
+**Middle East**
+
 ![](Tables/middle_east_fuel.png)
 
 - Petrol sold the highest, followed by hybrid, Diesel and electric got the lowest sales. Middle eastern Markets are still behind in the adaptation of More Eco friendly cars.
 
 **North America**
+
 ![](Tables/North_americ.png)
 
 - North America shows a high adaptation of eco friendly models with the highest sales being the electric models followed by the hybrid -- petrol comes next and diesel comes last.
 
-**South America**  
+**South America**
+
 ![alt text](Tables/south_america_fuel.png)
 
 - In south America, diesel Models comes first, followed by electric models, hybrid petrol comes last. is petrol more expensive in South america than diesel is?
@@ -218,8 +233,10 @@ In Africa, the 5 series recorded the highest sales and the 2nd highest average p
 ## PROJECT FILES
 
 - Data Cleaning: [Data_Cleaning_File](Data_cleaning)
-- Data Exploration: [](Analysis_script.sql)
+- Data Exploration: [ANALYTICS_FILE](Analysis_script.sql)
+- Report: [Report_file](REPORT.md)
+- Summary and Key Insights: [Summary and Key Insights](KEY_INSIGHTS_AND_SUMMARY.md)
 
 ## Author
 
-\*\*Nnaemeka Ijeoma
+**NNaemeka Ijeoma**
