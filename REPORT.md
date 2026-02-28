@@ -50,8 +50,7 @@ We seek to understand the relationship between the different factors afecting th
 
 ## REVENUE AND SALES
 
-![Total_Revenue](<Total Revenue-2.png>)
-
+![Total_Revenue](<Tables/Total Revenue-2.png>)
 ![revenue_contr_%](Tables/Percentage_contr_revenue.png)
 
 The ToTal Revenue for the period stood at Nineteen trillion, twelve billion, two hundred forty-two million, five hundred thirty-four thousand, four hundred fifty-nine Dollars.
@@ -77,12 +76,11 @@ We review the period from 2010 to 2014
 
 - the overall growth from comparing 2010 revenue to 2024 revenue stood at 4.06%.
 
-  ![Regions](regions.png)  
-   The data features Six(6) regions accross the world.
+  ![Regions](Tables/regions_.png)
+  The data features Six(6) regions accross the world.
 
 ### TOTAL SALES AND REVENUE PER REGION
 
-![Regional sales](Tables/sales_regions.png)  
 ![% SALES CONTRIBUTION](Tables/PERCENT_SALES-CONTR.png)  
 ![alt text](Tables/Percentage_contr_revenue.png)  
 ![alt text](Tables/AVG_PRICE_REGIONS.png)
@@ -103,7 +101,7 @@ We review the period from 2010 to 2014
 ### MODELS
 
 11 Models analysed  
-![Models](Models.png)  
+![Models](Tables/Models.png)
 ![Model_sales](Tables/sales_model.png)  
 ![](<Tables/revenue_per Model.png>)  
 ![](Tables/sales_model.png)  
@@ -234,7 +232,6 @@ In Africa, the 5 series recorded the highest sales and the 2nd highest average p
 
 - Data Cleaning: [Data_Cleaning_File](Data_cleaning)
 - Data Exploration: [ANALYTICS_FILE](Analysis_script.sql)
-- Report: [Report_file](REPORT.md)
 - Summary and Key Insights: [Summary and Key Insights](KEY_INSIGHTS_AND_SUMMARY.md)
 
 ## Author
