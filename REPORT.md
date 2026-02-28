@@ -51,19 +51,21 @@ We seek to understand the relationship between the different factors afecting th
 ### TOTAL REVENUE FOR PERIOUS UNDER REVEIW
 
 ![Total_Revenue](<Total Revenue-2.png>)
+
 ![revenue_contr_%](Tables/Percentage_contr_revenue.png)
+
 The ToTal Revenue for the period stood at Nineteen trillion, twelve billion, two hundred forty-two million, five hundred thirty-four thousand, four hundred fifty-nine Dollars.
 
 ### Total Sales
 
-![TOTAL](Tables/TOTAL_SALES.png)
-![Regional sales](Tables/sales_regions.png)
-![% SALES CONTRIBUTION](Tables/PERCENT_SALES-CONTR.png)
+![TOTAL](Tables/TOTAL_SALES.png)  
+![Regional sales](Tables/sales_regions.png)  
+![% SALES CONTRIBUTION](Tables/PERCENT_SALES-CONTR.png)  
 Total sales for the period under review stood at Two hundred fifty-three million, three hundred seventy-five thousand, seven hundred thirty-four.
 
 ### YEARS UNDER REVIEW
 
-![Years](Tables/years.png)
+![Years](Tables/years.png)  
 We review the period from 2010 to 2014
 
 ### REGIONS
@@ -72,5 +74,6 @@ We review the period from 2010 to 2014
 
 ### MODELS
 
-11 Models analysed
+11 Models analysed  
 ![Models](Models.png)
+![Model_sales]](Tables/sales_model.png)
