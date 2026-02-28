@@ -119,17 +119,63 @@ Select REGION,
 FROM BMW
 GROUP BY region
 ORDER BY SUM(revenue) DESC;
+--
+--
+--
+
 -- top region -sales
 Select region,
     FORMAT(SUM(sales_volume), 2) SALES
 FROM BMW
 GROUP BY region
 ORDER BY SUM(sales_volume) DESC;
+--
+--PERCENTAGE SALES CONTRIBUTION
+SELECT
+Region,
+sales,
+ROUND((100 * sales) / Total_sales ,2) as percent_contr
+from
+(select 
+region,
+sum(sales_volume) AS Sales,
+(select sum(sales_volume) from bmw) AS TOTAL_SALES
+from bmw
+group by region)t
+ORDER BY Sales DESC;
+--
+--
+--percentage Revenee contribution
+SELECT
+Region,
+Revenue,
+ROUND((100 * Revenue) / Total_Revenue ,2) as percent_contr
+from
+(select 
+region,
+sum(Revenue) AS Revenue,
+(select sum(Revenue) from bmw) AS TOTAL_Revenue
+from bmw
+group by region)t
+ORDER BY Revenue DESC;
 -- OVERVIEW 
 -- OF
 -- GROWTH TRENDS
 -- 
---
+--PERCENTGAE GROWTH OF REVENUE DIFF FROM 2010 TO 2024
+SELECT REVENUE_2010,
+REVENUE_2024,
+
+ROUND((100 * GROWTH) / REVENUE_2010, 2) AS PERCENT_GROWTH
+
+FROM (
+
+select 
+
+sum(case when year = 2010 then revenue else 0 end) as revenue_2010,
+sum(case when year = 2024 then revenue else 0 end) as revenue_2024,
+sum(case when year = 2024 then revenue else 0 end) - sum(case when year = 2010 then revenue else 0 end) as GROWTH
+from bmw)T;
 ---
 -- bEST PERFORMING AND WORST PERFOMING YEARS
 WITH low_years AS 
@@ -149,7 +195,7 @@ GROUP BY `year`)
 select
 lY.RN 'S/N',
 LY.`year` AS LOW_YEARS,
-FORMAT(LY.total_revenue, 2) AS total_revenue,
+FORMAT(LY.total_revenue, 2) AS total_low_revenue,
 HY.`YEAR` AS HIGH_YEARS,
 FORMAT(HY.total_revenue, 2) AS total_revenue
 FROM low_years LY
@@ -157,7 +203,7 @@ inner join high_years HY ON LY.RN = HY.RN
 WHERE lY.RN <= 5;
 --
 --
--- Growth trend from 2010 to 2014
+-- Growth trend from 2010 to 2024
 select
 year,
  region,
@@ -211,7 +257,21 @@ GROUP BY REGION;
 --
 --
 --
--- dIFFERENCE BETWEEN 2010 REVENUE AND 2014 REVENUE AND % GROWTH REGIONAL
+SELECT REVENUE_2010,
+REVENUE_2024,
+-- GROWTH,
+ROUND((100 * GROWTH) / REVENUE_2010, 2) AS PERCENT_GROWTH
+
+FROM (
+
+select 
+
+sum(case when year = 2010 then revenue else 0 end) as revenue_2010,
+sum(case when year = 2024 then revenue else 0 end) as revenue_2024,
+sum(case when year = 2024 then revenue else 0 end) - sum(case when year = 2010 then revenue else 0 end) as GROWTH
+from bmw)T;
+--
+-- dIFFERENCE BETWEEN 2010 REVENUE AND 2024 REVENUE AND % GROWTH REGIONAL
 WITH revenue_stat AS (
     SELECT region,
         SUM(
@@ -222,14 +282,14 @@ WITH revenue_stat AS (
         ) AS REVENUE_2010,
         SUM(
             CASE
-                WHEN YEAR = 2014 THEN revenue
+                WHEN YEAR = 2024 THEN revenue
                 ELSE 0
             END
-        ) AS REVENUE_2014,
+        ) AS REVENUE_2024,
         (
             SUM(
                 CASE
-                    WHEN YEAR = 2014 THEN revenue
+                    WHEN YEAR = 2024 THEN revenue
                     ELSE 0
                 END
             ) - SUM(
@@ -244,7 +304,7 @@ WITH revenue_stat AS (
 )
 select Region,
     Revenue_2010,
-    Revenue_2014,
+    Revenue_2024,
     revenue_change,
     round((100 * revenue_change) / revenue_2010, 2) as percent_growth
 from revenue_stat
@@ -254,20 +314,20 @@ order by percent_growth DESC;
 
 --
 --
--- Percentage growth of sales between 2010 and 2014
+-- Percentage growth of sales between 2010 and 2024
 WITH Sales_Volume_stat AS (SELECT 
 
 region,
 SUM(CASE WHEN YEAR = 2010 THEN Sales_Volume ELSE 0 END) AS Sales_Volume_2010,
-SUM(CASE WHEN YEAR = 2014 THEN Sales_Volume ELSE 0 END) AS Sales_Volume_2014,
-(SUM(CASE WHEN YEAR = 2014 THEN Sales_Volume ELSE 0 END) - SUM(CASE WHEN YEAR = 2010 THEN Sales_Volume ELSE 0 END)) as Sales_Volume_change
+SUM(CASE WHEN YEAR = 2024 THEN Sales_Volume ELSE 0 END) AS Sales_Volume_2024,
+(SUM(CASE WHEN YEAR = 2024 THEN Sales_Volume ELSE 0 END) - SUM(CASE WHEN YEAR = 2010 THEN Sales_Volume ELSE 0 END)) as Sales_Volume_change
 FROM bmw
 group by Region)
 
 select 
 Region,
 Sales_Volume_2010,
-Sales_Volume_2014,
+Sales_Volume_2024,
 Sales_Volume_change,
 round((100 * Sales_Volume_change) / Sales_Volume_2010, 2) as percent_growth
 from
@@ -306,6 +366,27 @@ FROM bmw
 GROUP BY model
 order BY Avg_price DESC;
 
+--
+--
+-- average Price of models accros the regions
+select 
+region,
+FORMAT(avg(price_usd),2) AS average_price
+from bmw
+GROUP BY region
+ORDER BY average_price desc;
+--
+-- Average Price of cars across the regions
+select 
+Region,
+FORMAT(avg(price_usd), 2) AS AVG_PRICE
+from bmw
+
+group by region
+;
+--
+--
+
 -- Model perfomance accross the regions
 SELECT
 region,
@@ -313,6 +394,7 @@ model,
 FORMAT(sum(sales_volume), 2) AS SALES,
 FORMAT(ROUND(avg(Price_USD), 2), 2) AVG_PRICE
 from bmw
+-- WHERE region = 'region_name'
  group by region, model
  order by region, sales DESC;
 
@@ -468,8 +550,6 @@ WHEN mileage_kms <= 50000 THEN 'Low Mileage(≤ 50,000km)'
 END
 ORDER BY avg(price_usd) DESC;
 --
-
-
 
 
 
