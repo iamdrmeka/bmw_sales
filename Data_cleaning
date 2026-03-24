@@ -34,3 +34,9 @@ ADD price DECIMAL(15, 2)
 UPDATE bmw
 SET price = revenue / Sales_Volume
 ALTER TABLE DROP column Price_USD;
+
+SELECT SUM(Model IS NULL) AS null_model,
+    SUM(Price_USD IS NULL) AS null_price,
+    SUM(Revenue IS NULL) AS null_revenue,
+    sum(sales_volume IS NULL) AS NULL_SALES
+FROM bmw;

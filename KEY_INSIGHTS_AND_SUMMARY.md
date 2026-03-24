@@ -72,3 +72,11 @@
     - Effort should be put in place to produce more hybrid and eco friendly options as there is a global shift to eco-friendly cars.
 
     - All regions must maintain peculiar pricing options to ensure fair competion in the local market.
+
+
+## PROJECT FILES
+
+- Data Cleaning: [Data_Cleaning_File](Data_cleaning)
+- Data Exploration: [ANALYTICS_FILE](Analysis_script.sql)
+- Report: [Report_file](REPORT.md)
+
