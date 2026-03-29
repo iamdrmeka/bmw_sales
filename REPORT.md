@@ -159,37 +159,27 @@ In Africa, the 5 series recorded the highest sales and the 2nd highest average p
 ![alt text](visuals/fuel_type.png)
 ![alt text](visuals/fuel_type_regions.png)
 
-**Africa**  
-![fuel](Tables/Africa_fuel.png)
+**Africa**
 
 - Petrol was the most sold fuel type in Africa, followed by the hybrid model, then electric and diesel got the lowest.
 
-**Asia**  
-![Asia](Tables/asia_feul.png)
+**Asia**
 
 - Hybrid Models sold the highest in asia, followed by the Electric models. The Diesel came 3rd with Petrol having the lowest sales. Asia has more adaptability to electric models and subsequent productions should be more of the Eco friendly models.
 
 **Europe**
 
-![Europe](Tables/europe_fuel.png)
-
 - Europe bought more Hybrid, followed by petrol. supinely, electric came 3rd with Diesel as the least preferred.
 
 **Middle East**
-
-![](Tables/middle_east_fuel.png)
 
 - Petrol sold the highest, followed by hybrid, Diesel and electric got the lowest sales. Middle eastern Markets are still behind in the adaptation of More Eco friendly cars.
 
 **North America**
 
-![](Tables/North_americ.png)
-
 - North America shows a high adaptation of eco friendly models with the highest sales being the electric models followed by the hybrid -- petrol comes next and diesel comes last.
 
 **South America**
-
-![alt text](Tables/south_america_fuel.png)
 
 - In south America, diesel Models comes first, followed by electric models, hybrid petrol comes last. is petrol more expensive in South america than diesel is?
 
